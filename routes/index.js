@@ -11,6 +11,9 @@ router.get('/topic', function(req, res, next) {
   let request = http.request({
     hostname: 'www.jeuxvideo.com',
     path: '/forums/42-1000021-47040669-1-0-1-0-les-voyages-de-presse-qu-en-est-il-posez-vos-questions.htm',
+    headers: {
+      'Cookie': 'coniunctio=cache_bypass'
+    }
   }, (res2) => {
     let text = ''
     res2.on('data', (chunk) => {
