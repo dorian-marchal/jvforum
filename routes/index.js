@@ -7,6 +7,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+http.globalAgent.keepAlive = true
+http.globalAgent.maxSockets = 30
+
 router.get('/topic', function(req, res, next) {
   let request = http.request({
     hostname: 'www.jeuxvideo.com',
@@ -27,7 +30,7 @@ router.get('/topic', function(req, res, next) {
 
   request.on('error', (e) => {
     console.log(`error: ${e.message}`)
-    res.set('Content-Type', 'text/plain')
+    res.contentType('text/plain')
     res.send('error')
   })
 
