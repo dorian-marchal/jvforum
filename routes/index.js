@@ -34,6 +34,11 @@ router.get('/topic', function(req, res, next) {
     res.send('error')
   })
 
+  request.setTimeout(1500, () => {
+    console.log('timeout')
+    request.abort()
+  })
+
   request.end()
 })
 
