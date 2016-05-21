@@ -30,8 +30,10 @@ router.get('/topic', function(req, res, next) {
 
   request.on('error', (e) => {
     console.log(`error: ${e.message}`)
-    res.contentType('text/plain')
-    res.send('error')
+    res.render('error', {
+      message: 'Erreur réseau',
+      error: {status: 'La page n’a pas pu être récupérée depuis jeuxvideo.com.'},
+    })
   })
 
   request.setTimeout(1500, () => {
