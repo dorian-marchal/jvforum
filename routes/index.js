@@ -7,6 +7,18 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+function parseTopic(body) {
+  let retour = {}
+
+  retour.title = false
+  let matches = body.match(/<span id="bloc-title-forum">(.+)<\/span>/)
+  if (matches) {
+    retour.title = matches[1]
+  }
+
+  return retour.title
+}
+
 http.globalAgent.keepAlive = true
 http.globalAgent.maxSockets = 30
 
@@ -23,8 +35,9 @@ router.get('/topic', function(req, res, next) {
       text += chunk
     })
     res2.on('end', () => {
-      res.contentType('text/plain')
-      res.send(text)
+      res.render('topic', {
+        title: parseTopic(text),
+      })
     })
   })
 
