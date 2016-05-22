@@ -8,8 +8,15 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' })
 })
 
-router.get('/topic', function(req, res, next) {
-  fetch.topic(42, 1000021, 39674315, 11, 'appli-jvforum-topic-officiel', (body) => {
+router.get('/:forumId([0-9]{1,7})/:idJvf([0-9]{1,9})-:slug([a-z0-9-]+)/:page([0-9]{1,5})?', function(req, res, next) {
+  let forumId = parseInt(req.params.forumId)
+    , idJvf = req.params.idJvf
+    , mode = idJvf[0] == '0' ? 1 : 42
+    , idLegacyOrNew = parseInt(idJvf)
+    , slug = req.params.slug
+    , page = req.params.page ? parseInt(req.params.page) : 1
+
+  fetch.topic(mode, forumId, idLegacyOrNew, page, slug, (body) => {
     res.render('topic', {
       data: parse.topic(body),
     })
