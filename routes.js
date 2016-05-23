@@ -17,8 +17,12 @@ router.get('/:forumId([0-9]{1,7})/:idJvf([0-9]{1,9})-:slug([a-z0-9-]+)/:page([0-
     , page = req.params.page ? parseInt(req.params.page) : 1
 
   fetch.topic(mode, forumId, idLegacyOrNew, page, slug, (body) => {
-    res.render('topic', {
-      data: parse.topic(body),
+    let parseData = parse.topic(body)
+    res.render('topic2', {
+      title: parseData.title,
+      data: parseData,
+      userAgent: req.headers['user-agent'],
+      googleAnalyticsId: 'UA-63457513-1'
     })
   }, (e) => {
     console.log(`error: ${e.message}`)
