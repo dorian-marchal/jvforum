@@ -1,4 +1,26 @@
 extends layout2
 
 block body
-  h1!= title
+  body(class="forum-#{forumId} topic-#{idJvf}")
+    .sheet
+      include ./includes/head.jade
+      .content
+        h1.page-title.page-title--topic
+          != title
+          .mobile-menu
+            .mobile-menu__opener
+              .mobile-menu__opener-icon
+            .mobile-menu__items
+              unless isInFavorite
+                span.js-favorite-toggle.js-favorite-toggle-label.mobile-menu__item(data-action="add") Mettre en favoris
+              else
+                span.js-favorite-toggle.js-favorite-toggle-label.mobile-menu__item(data-action="delete") Retirer des favoris
+              a.mobile-menu__item(href="/#{urlJvc}" target="_blank") Ouvrir sur JVC
+        .pagination-topic.pagination-topic--top
+          unless isLocked
+            .pagination-topic__action-button.pagination-topic__action-button--post
+              span.js-go-to-form.button.button--raised.button--cta.button--scale Répondre
+          include ./includes/topicPagination.jade
+        .messages-list
+          script var messages = []
+          include ./includes/topicMessages.jade
