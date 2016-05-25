@@ -14,6 +14,11 @@ each i in messages
                   img.message__byline-author-avatar-image.message__byline-author-avatar-image--default(src="http://image.jeuxvideo.com/avatar-md/default.jpg")
               | 
               span(class="message__byline-author-pseudo message__byline-author-pseudo--#{i.status}" title=i.nickname)= i.nickname
+          else
+            span.message__byline-author-link.message__byline-author-link--no-link
+              span.message__byline-author-avatar
+                img.message__byline-author-avatar-image.message__byline-author-avatar-image--default(src="http://image.jeuxvideo.com/avatar-md/default.jpg")
+              span.message__byline-author-pseudo Pseudo supprimé
         .message__byline-date
           span.js-menu.js-date.message__byline-date-inline(title=i.date)= i.date
       .js-content.message__content!= i.content
