@@ -8,7 +8,7 @@ each i in messages
           unless i.isNicknameDeleted
             a.message__byline-author-link(href="/#{i.nickname.toLowerCase()}")
               span.message__byline-author-avatar
-                if !avatar
+                if i.avatar
                   img.message__byline-author-avatar-image(src=i.avatar)
                 else
                   img.message__byline-author-avatar-image.message__byline-author-avatar-image--default(src="http://image.jeuxvideo.com/avatar-md/default.jpg")
