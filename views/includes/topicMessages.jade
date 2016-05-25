@@ -6,7 +6,7 @@ each i in messages
       .message__byline
         .message__byline-author
           unless i.isNicknameDeleted
-            a.message__byline-author-link(href="/@#{i.nickname.toLowerCase()}")
+            a.message__byline-author-link(href="http://www.jeuxvideo.com/profil/#{i.nickname.toLowerCase()}?mode=infos" target="_blank")
               span.message__byline-author-avatar
                 if i.avatar
                   img.message__byline-author-avatar-image(src=i.avatar)
