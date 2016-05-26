@@ -1,10 +1,9 @@
 var express = require('express')
   , http = require('http')
-  , sha1 = require('sha1')
-  , fs = require('fs')
   , parse = require('./utils/parsing')
   , fetch = require('./utils/fetching')
   , router = express.Router()
+  , cacheBusting = require('./utils/prepareCacheBusting.js')
 
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' })
@@ -23,7 +22,7 @@ router.get('/:forumId([0-9]{1,7})/:idJvf([0-9]{1,9})-:slug([a-z0-9-]+)/:page([0-
       , viewLocals = {
           userAgent: req.headers['user-agent'],
           googleAnalyticsId: 'UA-63457513-1',
-          cssContentChecksum,
+          cssChecksum: cacheBusting.css.checksum,
           forumId,
           idJvf,
           mode,
@@ -47,10 +46,13 @@ router.get('/:forumId([0-9]{1,7})/:idJvf([0-9]{1,9})-:slug([a-z0-9-]+)/:page([0-
   })
 })
 
-let cssContentChecksum = sha1(fs.readFileSync('./public/stylesheets/jvforum.css'))
-
-router.get(`/assets/stylesheet--${cssContentChecksum}.css`, (req, res, next) => {
-  res.sendFile('jvforum.css', {root: __dirname + '/public/stylesheets/'})
+router.get(`/assets/stylesheet--${cacheBusting.css.checksum}.css`, (req, res, next) => {
+  res.contentType('text/css')
+  res.send(cacheBusting.css.content)
 })
 
-module.exports = router;
+router.get('/assets/images/:filename(*)--:checksum(*).:extension(*)', (req, res, next) => {
+  res.sendFile(`${req.params.filename}.${req.params.extension}`, {root: __dirname + '/public/images/'})
+})
+
+module.exports = router
