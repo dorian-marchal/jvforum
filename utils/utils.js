@@ -20,12 +20,14 @@ function adaptMessageContent(content) {
     content += `<p class="message__content-edit-mention"><span title="${date}">Modifié le ${date}</span></p>`
   }
 
+  /* All links on JVForum should have this order of attributes: class, href, target, title, data-link-jvc. */
+
   // JvCare links
   // Un-shorten
   regex = /<span class="JvCare[^<]+>([^<]+)(?:<i><\/i><span>([^<]+)<\/span>([^<]+))?<\/span>/g
   while (matches = regex.exec(content)) {
     let url = matches.slice(1).join('')
-    content = content.replace(matches[0], `<a href="${url}" title="${url}" target="_blank">${url}</a>`)
+    content = content.replace(matches[0], `<a href="${url}" target="_blank" title="${url}">${url}</a>`)
   }
 
   // Non-JvCare links unshortening
@@ -38,7 +40,7 @@ function adaptMessageContent(content) {
   regex = /<a href="((?:&#[x0-9a-f]+;)+)"[^<]+>([^<]+)<\/a>/g
   while (matches = regex.exec(content)) {
     let email = entities.decode(matches[1])
-    content = content.replace(matches[0], `<a href="mailto:${email}" title="${email}" target="_blank">${email}</a>`)
+    content = content.replace(matches[0], `<a href="mailto:${email}" target="_blank" title="${email}">${email}</a>`)
   }
 
   // NoelShack thumbnails
@@ -76,7 +78,7 @@ function adaptMessageContent(content) {
     if (messageId) {
       path += '#' + messageId
     }
-    return `<a href="/${path}" data-link-jvc="${url}">jvforum.fr${path}</a>`
+    return `<a href="/${path}" title="${url}" data-link-jvc="${url}">jvforum.fr${path}</a>`
   })
 
   // Make JVC links open in a new tab
