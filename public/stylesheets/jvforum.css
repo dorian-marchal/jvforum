@@ -1738,17 +1738,7 @@ h1, h2, h3 {
   background-image: url(/images/edit-24px.2.svg);
 }
 
-.message__actions-action--kick {
-  background-image: url(/images/kick-24px.svg);
-}
-
-.message__actions-action--punish {
-  background-image: url(/images/punish-24px.svg);
-}
-
-.message__actions-action--delete,
-.message__actions-action--kick,
-.message__actions-action--punish {
+.message__actions-action--delete {
   color: #F44336;
 }
 
@@ -1790,14 +1780,6 @@ h1, h2, h3 {
 
 .message__quick-action--delete {
   background: url(/images/delete.2.svg) center no-repeat;
-}
-
-.message__quick-action--kick {
-  background: url(/images/kick.svg) center no-repeat;
-}
-
-.message__quick-action--punish {
-  background: url(/images/punish.svg) center no-repeat;
 }
 
 /* Blacklisted */
