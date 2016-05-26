@@ -838,45 +838,6 @@ h1, h2, h3 {
   padding: 3px;
 }
 
-.smileys-link {
-  display: inline-block;
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  margin: -10px;
-  opacity: .5;
-  top: 5px;
-  text-align: center;
-}
-
-.smileys-link--mobile {
-  top: 115px;
-  right: 17px;
-}
-
-@media (min-width: 560px) { /* Pour suivre le bouton qui grossit */
-  .smileys-link--desktop {
-    top: 8px;
-  }
-}
-
-.smileys-link:hover, .smileys-link:active {
-  opacity: 1;
-}
-
-.smileys-link__box {
-  display: inline-block;
-  width: 31px;
-  height: 31px;
-  border-radius: 3px;
-  background: hsl(240, 8%, 16%) url(/images/smileys.2.png) center no-repeat;
-  background-size: 15px;
-  box-shadow: inset 0 2px 1px hsla(0, 0%, 0%, .2),
-              inset 0 -1px 0 hsla(0, 0%, 100%, .15);
-  position: relative;
-  top: 7px;
-}
-
 .form__action--submit {
   text-align: center;
   width: 60%;
