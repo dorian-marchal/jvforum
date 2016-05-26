@@ -1,4 +1,5 @@
 var entities = require('html-entities').Html5Entities
+  , stickersList = require('./stickersList.js')
 
 function adaptMessageContent(content) {
   let matches
@@ -86,6 +87,30 @@ function adaptMessageContent(content) {
 
   // Smileys
   content = content.replace(/<img src="\/\/image\.jeuxvideo\.com\/smileys_img\/([^.]+)\.gif" alt="([^"]+)" data-def="SMILEYS" data-code="[^"]+" title="[^"]+" \/>/g, '<img class="smiley smiley--$1" src="//image.jeuxvideo.com/smileys_img/$1.gif" data-code="$2" title="$2" alt="$2">')
+
+  // Stickers
+  content = content.replace(/<img class="img-stickers" src="http:\/\/jv\.stkr\.fr\/p\/([^"]+)"\/>/g, (all, id) => {
+    let category = 'unknown'
+      , code = ''
+      , shortcut = `[[sticker:p/${id}]]`
+
+    loop:
+    for (let category_ in stickersList) {
+      for (let id_ in stickersList[category_]) {
+        let code_ = stickersList[category_][id_]
+        console.log(code_)
+        if (id_ == id) {
+          category = category_
+          code = code_
+          shortcut = `:${code}:`
+          break loop
+        }
+      }
+    }
+
+    return `<img class="sticker sticker--${category}" src="/images/stickers/140/${code}.png" data-sticker-id="${id}" data-code="${shortcut}" title="${shortcut}" alt="${shortcut}">`
+  })
+
 
   // Show thumbnails for YouTube links
   content = content.replace(/<a href="(https?:\/\/(?:[a-z]+\.)?youtube\.com\/watch[^"]*(?:\?|&amp;)v=([a-zA-Z0-9-_]{11})([^"])*)"[^>]+>.+<\/a>/g, '<a class="youtube-link" href="$1" target="_blank" title="$1"><img class="youtube-link__thumb" src="http://img.youtube.com/vi/$2/mqdefault.jpg" alt="$1"></a>')
