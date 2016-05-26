@@ -37,6 +37,12 @@ function adaptMessageContent(content) {
     content = content.replace(matches[0], `<a href="mailto:${email}" title="${email}" target="_blank">${email}</a>`)
   }
 
+  // NoelShack thumbnails
+  content = content.replace(/<a href="([^"]+)" data-def="NOELSHACK" target="_blank"><img class="img-shack" width="68" height="51" src="([^"]+)" alt="[^"]+"\/><\/a>/g, '<a class="noelshack-link" href="$1" target="_blank" title="$1"><img class="noelshack-link__thumb" src="$2" alt="$1"></a>')
+
+  // Make NoelShack links go directly to the image file
+  content = content.replace(/<a class="noelshack-link" href="(?:https?:\/\/www\.noelshack\.com\/([0-9]+)-([0-9]+)-([^"]+))" target="_blank" title="[^"]+">/g, '<a class="noelshack-link" href="http://image.noelshack.com/fichiers/$1/$2/$3" target="_blank" title="http://image.noelshack.com/fichiers/$1/$2/$3">')
+
   return content
 }
 
