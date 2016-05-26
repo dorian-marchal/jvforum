@@ -1,14 +1,16 @@
 var express = require('express')
   , http = require('http')
-  , router = express.Router()
+  , sha1 = require('sha1')
+  , fs = require('fs')
   , parse = require('./utils/parsing')
   , fetch = require('./utils/fetching')
+  , router = express.Router()
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' })
 })
 
-router.get('/:forumId([0-9]{1,7})/:idJvf([0-9]{1,9})-:slug([a-z0-9-]+)/:page([0-9]{1,5})?', function(req, res, next) {
+router.get('/:forumId([0-9]{1,7})/:idJvf([0-9]{1,9})-:slug([a-z0-9-]+)/:page([0-9]{1,5})?', (req, res, next) => {
   let forumId = parseInt(req.params.forumId)
     , idJvf = req.params.idJvf
     , mode = idJvf[0] == '0' ? 1 : 42
@@ -21,6 +23,7 @@ router.get('/:forumId([0-9]{1,7})/:idJvf([0-9]{1,9})-:slug([a-z0-9-]+)/:page([0-
       , viewLocals = {
           userAgent: req.headers['user-agent'],
           googleAnalyticsId: 'UA-63457513-1',
+          cssContentChecksum,
           forumId,
           idJvf,
           mode,
@@ -42,6 +45,12 @@ router.get('/:forumId([0-9]{1,7})/:idJvf([0-9]{1,9})-:slug([a-z0-9-]+)/:page([0-
       error: {status: 'La page n’a pas pu être récupérée depuis jeuxvideo.com.'},
     })
   })
+})
+
+let cssContentChecksum = sha1(fs.readFileSync('./public/stylesheets/jvforum.css'))
+
+router.get(`/assets/stylesheet--${cssContentChecksum}.css`, (req, res, next) => {
+  res.sendFile('jvforum.css', {root: __dirname + '/public/stylesheets/'})
 })
 
 module.exports = router;

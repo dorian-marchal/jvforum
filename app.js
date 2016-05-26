@@ -6,7 +6,7 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , http = require('http')
   , routes = require('./routes')
-  , app = express();
+  , app = express()
 
 http.globalAgent.keepAlive = true
 http.globalAgent.maxSockets = 30
@@ -54,6 +54,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
