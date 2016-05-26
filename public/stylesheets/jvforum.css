@@ -432,7 +432,7 @@ h1, h2, h3 {
   border: none; /* text input */
   background: transparent; /* text input */
   outline: none;
-
+  white-space: nowrap;
   color: hsl(190, 80%, 70%);
 }
 
