@@ -124,8 +124,8 @@ function adaptMessageContent(content) {
   content = content.replace(/<div class="player-contenu">\s*<div class="embed-responsive embed-responsive-16by9">\s*<iframe src="https:\/\/player\.twitch\.tv\/\?channel=([^&]+)&autoplay=false" allowfullscreen><\/iframe>\s*<\/div>\s*<\/div>/g, '<a href="https://www.twitch.tv/$1" target="_blank" title="$1">https://www.twitch.tv/$1</a>')
 
   // Cut long links
-  content = content.replace(/<a ([^>]+)>([^<]{110,})<\/a>/g, (all, attributes, text) => {
-    return `<a class="long-link" ${attributes}>` + text.substr(0, 105) + '<span class="long-link__hidden-part">' + text.substr(105) + '</span></a>'
+  content = content.replace(/<a ([^>]+)>([^<]{90,})<\/a>/g, (all, attributes, text) => {
+    return `<a class="long-link" ${attributes}>` + text.substr(0, 85) + '<span class="long-link__hidden-part">' + text.substr(85) + '</span></a>'
   })
 
   return content
