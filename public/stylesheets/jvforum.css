@@ -247,15 +247,15 @@ h1, h2, h3 {
 }
 
 .aside__top-button--open-jeuxvideocom {
-  background-image: url(/images/open-jeuxvideocom.2.svg);
+  background-image: url(/images/icons/openJvc.svg);
 }
 
 .aside__top-button--favorite {
-  background-image: url(/images/add-to-favorites.2.svg);
+  background-image: url(/images/icons/favoritesAdd.svg);
 }
 
 .aside__top-button--unfavorite {
-  background-image: url(/images/remove-from-favorites.svg);
+  background-image: url(/images/icons/favoritesRemove.svg);
 }
 
 .aside__top-button-label {
@@ -309,7 +309,7 @@ h1, h2, h3 {
 }
 
 .mobile-menu__opener-icon {
-  background: url(/images/more_vert_title.svg) center no-repeat;
+  background: url(/images/icons/mobileMenu.svg) center no-repeat;
   width: 24px;
   height: 28px;
   position: absolute;
@@ -806,7 +806,7 @@ h1, h2, h3 {
 .button-mobile-post__icon {
   width: 40px;
   height: 40px;
-  background: url(/images/button-post.svg) 10px center no-repeat;
+  background: url(/images/icons/postButton.svg) 10px center no-repeat;
   opacity: .5;
 }
 
@@ -947,7 +947,7 @@ h1, h2, h3 {
 
 .page-title__link--with-refresh-icon {
   text-indent: 24px;
-  background: url(/images/refresh.svg) 6px 15px no-repeat;
+  background: url(/images/icons/forumRefresh.svg) 6px 15px no-repeat;
 }
 
 @media (min-width: 400px) {
@@ -959,7 +959,7 @@ h1, h2, h3 {
 @media (min-width: 1025px) {
   .page-title__link--with-refresh-icon {
     text-indent: 32px;
-    background: url(/images/refresh.svg) 12px 20px no-repeat;
+    background: url(/images/icons/forumRefresh.svg) 12px 20px no-repeat;
   }
 }
 
@@ -1030,25 +1030,25 @@ h1, h2, h3 {
 }
 
 .topic__label--dossier1 {
-  background-image: url(/images/topic-list-icons/dossier1.3.svg);
+  background-image: url(/images/icons/topics/dossier1.svg);
 }
 .topic__label--dossier2 {
-  background-image: url(/images/topic-list-icons/dossier2.3.svg);
+  background-image: url(/images/icons/topics/dossier2.svg);
 }
 .topic__label--lock {
-  background-image: url(/images/topic-list-icons/lock.3.svg);
+  background-image: url(/images/icons/topics/lock.svg);
 }
 .topic__label--marque-on {
-  background-image: url(/images/topic-list-icons/marque-on.3.svg);
+  background-image: url(/images/icons/topics/marque-on.svg);
 }
 .topic__label--marque-off {
-  background-image: url(/images/topic-list-icons/marque-off.3.svg);
+  background-image: url(/images/icons/topics/marque-off.svg);
 }
 .topic__label--resolu {
-  background-image: url(/images/topic-list-icons/resolu.3.svg);
+  background-image: url(/images/icons/topics/resolu.svg);
 }
 .topic__label--favorite {
-  background-image: url(/images/topic-list-icons/favorite.svg);
+  background-image: url(/images/icons/topics/favorite.svg);
 }
 
 .topic__blacklist {
@@ -1285,7 +1285,7 @@ h1, h2, h3 {
 .fab-post__icon {
   width: 40px;
   height: 40px;
-  background: url(/images/fab.svg) center no-repeat;
+  background: url(/images/icons/topicFab.svg) center no-repeat;
 }
 
 @media (min-width: 1025px) {
@@ -1587,7 +1587,7 @@ h1, h2, h3 {
   cursor: pointer;
   padding: 10px;
   padding-right: 20px;
-  background: url(/images/more_vert.2.svg) no-repeat right 3px center;
+  background: url(/images/icons/messageOptions.svg) no-repeat right 3px center;
   color: hsl(190, 80%, 70%);
   font-size: 13px;
   vertical-align: top;
@@ -1727,15 +1727,15 @@ h1, h2, h3 {
 }
 
 .message__actions-action--quote {
-  background-image: url(/images/quote-24px.2.svg);
+  background-image: url(/images/icons/messageQuoteMobile.svg);
 }
 
 .message__actions-action--delete {
-  background-image: url(/images/delete-24px.2.svg);
+  background-image: url(/images/icons/messageDeleteMobile.svg);
 }
 
 .message__actions-action--edit {
-  background-image: url(/images/edit-24px.2.svg);
+  background-image: url(/images/icons/messageEditMobile.svg);
 }
 
 .message__actions-action--delete {
@@ -1771,15 +1771,15 @@ h1, h2, h3 {
 }
 
 .message__quick-action--quote {
-  background: url(/images/quote.2.svg) center no-repeat;
+  background: url(/images/icons/messageQuoteDesktop.svg) center no-repeat;
 }
 
 .message__quick-action--edit {
-  background: url(/images/edit.2.svg) center no-repeat;
+  background: url(/images/icons/messageEditDesktop.svg) center no-repeat;
 }
 
 .message__quick-action--delete {
-  background: url(/images/delete.2.svg) center no-repeat;
+  background: url(/images/icons/messageDeleteDesktop.svg) center no-repeat;
 }
 
 /* Blacklisted */
@@ -1957,7 +1957,7 @@ color: hsl(240, 8%, 27%);
 }
 
 .youtube-link:after {
-  background: url(/images/ic_play_circle_outline_white_36px.svg);
+  background: url(/images/icons/youtube.svg);
   background-size: 30px;
   opacity: .75;
   width: 30px;
@@ -1978,7 +1978,6 @@ color: hsl(240, 8%, 27%);
 
 @media (min-width: 1025px) {
   .youtube-link:after {
-    background: url(/images/ic_play_circle_outline_white_36px.svg);
     background-size: 36px;
     width: 36px;
     height: 36px;
