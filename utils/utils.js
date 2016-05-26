@@ -98,7 +98,6 @@ function adaptMessageContent(content) {
     for (let category_ in stickersList) {
       for (let id_ in stickersList[category_]) {
         let code_ = stickersList[category_][id_]
-        console.log(code_)
         if (id_ == id) {
           category = category_
           code = code_
@@ -110,7 +109,6 @@ function adaptMessageContent(content) {
 
     return `<img class="sticker sticker--${category}" src="/images/stickers/140/${code}.png" data-sticker-id="${id}" data-code="${shortcut}" title="${shortcut}" alt="${shortcut}">`
   })
-
 
   // Show thumbnails for YouTube links
   content = content.replace(/<a href="(https?:\/\/(?:[a-z]+\.)?youtube\.com\/watch[^"]*(?:\?|&amp;)v=([a-zA-Z0-9-_]{11})([^"])*)"[^>]+>.+<\/a>/g, '<a class="youtube-link" href="$1" target="_blank" title="$1"><img class="youtube-link__thumb" src="http://img.youtube.com/vi/$2/mqdefault.jpg" alt="$1"></a>')
@@ -124,6 +122,11 @@ function adaptMessageContent(content) {
   content = content.replace(/<div class="player-contenu"><div class="embed-responsive embed-responsive-16by9"><iframe frameborder="0" width="[0-9]+" height="[0-9]+" src="https:\/\/www\.dailymotion\.com\/embed\/video\/([^"]+)" allowfullscreen><\/iframe><\/div><\/div>/g, '<a href="https://dai.ly/$1" target="_blank" title="https://dai.ly/$1">https://dai.ly/$1</a>')
   // Remove Twitch embeds
   content = content.replace(/<div class="player-contenu">\s*<div class="embed-responsive embed-responsive-16by9">\s*<iframe src="https:\/\/player\.twitch\.tv\/\?channel=([^&]+)&autoplay=false" allowfullscreen><\/iframe>\s*<\/div>\s*<\/div>/g, '<a href="https://www.twitch.tv/$1" target="_blank" title="$1">https://www.twitch.tv/$1</a>')
+
+  // Cut long links
+  content = content.replace(/<a ([^>]+)>([^<]{110,})<\/a>/g, (all, attributes, text) => {
+    return `<a class="long-link" ${attributes}>` + text.substr(0, 105) + '<span class="long-link__hidden-part">' + text.substr(105) + '</span></a>'
+  })
 
   return content
 }
