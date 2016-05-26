@@ -82,6 +82,10 @@ function adaptMessageContent(content) {
   // Make JVC links open in a new tab
   content = content.replace(/<a href="(https?:\/\/(?:www|m)\.jeuxvideo\.com\/[^"]+)" title/g, '<a href="$1" target="_blank" title')
 
+  // Show thumbnails for YouTube links
+  content = content.replace(/<a href="(https?:\/\/(?:[a-z]+\.)?youtube\.com\/watch[^"]*(?:\?|&amp;)v=([a-zA-Z0-9-_]{11})([^"])*)"[^>]+>.+<\/a>/g, '<a class="youtube-link" href="$1" target="_blank" title="$1"><img class="youtube-link__thumb" src="http://img.youtube.com/vi/$2/mqdefault.jpg" alt="$1"></a>')
+  content = content.replace(/<a href="(https?:\/\/youtu\.be\/([a-zA-Z0-9-_]{11})([^"])*)"[^>]+>.+?<\/a>/g, '<a class="youtube-link" href="$1" target="_blank" title="$1"><img class="youtube-link__thumb" src="http://img.youtube.com/vi/$2/mqdefault.jpg" alt="$1"></a>')
+
   return content
 }
 
