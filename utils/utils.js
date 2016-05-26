@@ -79,6 +79,9 @@ function adaptMessageContent(content) {
     return `<a href="/${path}" data-link-jvc="${url}">jvforum.fr${path}</a>`
   })
 
+  // Make JVC links open in a new tab
+  content = content.replace(/<a href="(https?:\/\/(?:www|m)\.jeuxvideo\.com\/[^"]+)" title/g, '<a href="$1" target="_blank" title')
+
   return content
 }
 
