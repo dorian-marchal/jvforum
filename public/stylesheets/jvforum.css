@@ -309,7 +309,7 @@ h1, h2, h3 {
 }
 
 .mobile-menu__opener-icon {
-  background: url('/images/more_vert_title.svg') center no-repeat;
+  background: url(/images/more_vert_title.svg) center no-repeat;
   width: 24px;
   height: 28px;
   position: absolute;
@@ -869,7 +869,7 @@ h1, h2, h3 {
   width: 31px;
   height: 31px;
   border-radius: 3px;
-  background: hsl(240, 8%, 16%) url('/images/smileys.2.png') center no-repeat;
+  background: hsl(240, 8%, 16%) url(/images/smileys.2.png) center no-repeat;
   background-size: 15px;
   box-shadow: inset 0 2px 1px hsla(0, 0%, 0%, .2),
               inset 0 -1px 0 hsla(0, 0%, 100%, .15);
@@ -1129,25 +1129,25 @@ h1, h2, h3 {
 }
 
 .topic__label--dossier1 {
-  background-image: url('/images/topic-list-icons/dossier1.3.svg');
+  background-image: url(/images/topic-list-icons/dossier1.3.svg);
 }
 .topic__label--dossier2 {
-  background-image: url('/images/topic-list-icons/dossier2.3.svg');
+  background-image: url(/images/topic-list-icons/dossier2.3.svg);
 }
 .topic__label--lock {
-  background-image: url('/images/topic-list-icons/lock.3.svg');
+  background-image: url(/images/topic-list-icons/lock.3.svg);
 }
 .topic__label--marque-on {
-  background-image: url('/images/topic-list-icons/marque-on.3.svg');
+  background-image: url(/images/topic-list-icons/marque-on.3.svg);
 }
 .topic__label--marque-off {
-  background-image: url('/images/topic-list-icons/marque-off.3.svg');
+  background-image: url(/images/topic-list-icons/marque-off.3.svg);
 }
 .topic__label--resolu {
-  background-image: url('/images/topic-list-icons/resolu.3.svg');
+  background-image: url(/images/topic-list-icons/resolu.3.svg);
 }
 .topic__label--favorite {
-  background-image: url('/images/topic-list-icons/favorite.svg');
+  background-image: url(/images/topic-list-icons/favorite.svg);
 }
 
 .topic__blacklist {
@@ -2074,7 +2074,7 @@ color: hsl(240, 8%, 27%);
 }
 
 .youtube-link:after {
-  background: url('/images/ic_play_circle_outline_white_36px.svg');
+  background: url(/images/ic_play_circle_outline_white_36px.svg);
   background-size: 30px;
   opacity: .75;
   width: 30px;
@@ -2095,7 +2095,7 @@ color: hsl(240, 8%, 27%);
 
 @media (min-width: 1025px) {
   .youtube-link:after {
-    background: url('/images/ic_play_circle_outline_white_36px.svg');
+    background: url(/images/ic_play_circle_outline_white_36px.svg);
     background-size: 36px;
     width: 36px;
     height: 36px;
