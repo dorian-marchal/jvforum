@@ -21,11 +21,15 @@ function adaptMessageContent(content) {
   }
 
   // JvCare links
+  // Un-shorten
   regex = /<span class="JvCare[^<]+>([^<]+)(?:<i><\/i><span>([^<]+)<\/span>([^<]+))?<\/span>/g
   while (matches = regex.exec(content)) {
     let url = matches.slice(1).join('')
     content = content.replace(matches[0], `<a href="${url}" title="${url}" target="_blank">${url}</a>`)
   }
+
+  // Non-JvCare links unshortening
+  content = content.replace(/(<a[^>]+>)([^<]+)<i><\/i><span>([^<]+)<\/span>([^<]+)<\/a>/g, '$1$2$3$4</a>')
 
   // Email addresses
   // 1. Add mailto: at the start
