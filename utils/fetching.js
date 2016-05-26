@@ -1,4 +1,5 @@
 var http = require('http')
+, config = require('../config/index.js')
 
 function topic(mode, forumId, idLegacyOrNew, page, slug, successCallback, failCallback) {
   let request = http.request({
@@ -19,7 +20,7 @@ function topic(mode, forumId, idLegacyOrNew, page, slug, successCallback, failCa
 
   request.on('error', failCallback)
 
-  request.setTimeout(1500, () => {
+  request.setTimeout(config.timeout, () => {
     console.log('timeout')
     request.abort()
   })

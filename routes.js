@@ -2,8 +2,9 @@ var express = require('express')
   , http = require('http')
   , parse = require('./utils/parsing')
   , fetch = require('./utils/fetching')
-  , router = express.Router()
   , cacheBusting = require('./utils/prepareCacheBusting.js')
+  , config = require('./config/index.js')
+  , router = express.Router()
 
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' })
@@ -21,7 +22,7 @@ router.get('/:forumId([0-9]{1,7})/:idJvf([0-9]{1,9})-:slug([a-z0-9-]+)/:page([0-
     let parsed = parse.topic(body)
       , viewLocals = {
           userAgent: req.headers['user-agent'],
-          googleAnalyticsId: 'UA-63457513-1',
+          googleAnalyticsId: config.googleAnalyticsId,
           cssChecksum: cacheBusting.css.checksum,
           forumId,
           idJvf,
