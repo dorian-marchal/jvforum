@@ -14,3 +14,9 @@ Cette nouvelle version de JVForum est codée en node.js.
 * npm start
 
 JVForum sera lancé sur localhost:3000.
+
+### Debug
+
+Utilisez `DEBUG=jvforum:*` pour afficher les logs de debug :
+
+* DEBUG=jvforum:* npm start
