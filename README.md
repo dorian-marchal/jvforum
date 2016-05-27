@@ -2,6 +2,11 @@
 
 Cette nouvelle version de JVForum est codée en node.js.
 
+### Dépendances
+
+- node v6.2.*
+- npm
+
 ### Installation
 
 * npm install
